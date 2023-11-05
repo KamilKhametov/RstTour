@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">RstTour</string>
+
+    <string name="main_tab_title">Главная</string>
+    <string name="map_tab_title">Карта</string>
+    <string name="booking_tab_title">Бронь</string>
+    <string name="chat_tab_title">Чат</string>
+    <string name="more_tab_title">Еще</string>
+</resources>
