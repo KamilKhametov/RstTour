@@ -1,24 +1,25 @@
 package com.khametov.rsttour.screens.main.data.repo
 
 import com.khametov.rsttour.common.base.BaseMapper
-import com.khametov.rsttour.screens.main.data.db.FavoritesDataSource
-import com.khametov.rsttour.screens.main.data.db.dto.FlightLocalDto
+import com.khametov.rsttour.screens.main.data.db.model.BlogDto
+import com.khametov.rsttour.screens.main.data.db.model.MainDto
 import com.khametov.rsttour.screens.main.data.network.api.MainRestApi
-import com.khametov.rsttour.screens.main.data.network.dto.RTFlightsResponseDto
-import com.khametov.rsttour.screens.main.domain.entity.FlightEntity
-import com.khametov.rsttour.screens.main.domain.entity.RTFlightsEntity
+import com.khametov.rsttour.screens.main.domain.entity.BlogEntity
+import com.khametov.rsttour.screens.main.domain.entity.MainEntity
 import com.khametov.rsttour.screens.main.domain.repo.MainRepository
 import javax.inject.Inject
 
 internal class MainRepositoryImpl @Inject constructor(
     private val api: MainRestApi,
-    private val localDataSource: FavoritesDataSource,
-    private val flightsMapper: BaseMapper<RTFlightsResponseDto, RTFlightsEntity>,
-    private val favoritesMapper: BaseMapper<FlightLocalDto, FlightEntity>,
-    private val dtoMapper: BaseMapper<FlightEntity, FlightLocalDto>
+    private val mainMapper: BaseMapper<MainDto, MainEntity>,
+    private val blogMapper: BaseMapper<BlogDto, BlogEntity>
 ): MainRepository {
 
-    override suspend fun getFavorites(): List<FlightEntity> {
-        return listOf()
+    override suspend fun getMain(): MainEntity {
+        return mainMapper.map(api.getMain())
+    }
+
+    override suspend fun getBlog(requestUrl: String): BlogEntity {
+        return blogMapper.map(api.getBlogInfo(requestUrl))
     }
 }

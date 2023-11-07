@@ -19,22 +19,20 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.khametov.rsttour.R
-import com.khametov.rsttour.screens.main.domain.entity.FlightEntity
-import com.khametov.rsttour.screens.main.presentation.list.ui.FlightsListModel
-import com.khametov.rsttour.screens.main.presentation.list.ui.FlightsListModel.Flight.Companion.map2Entity
+import com.khametov.rsttour.screens.main.domain.entity.BlogDataEntity
 import com.khametov.rsttour.ui.helpers.DashedLine
 import com.khametov.rsttour.ui.theme.AeroTheme
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-internal fun FlightItem(
-    model: FlightsListModel.Flight,
-    onFlightSelect: (FlightEntity) -> Unit,
+internal fun MainItem(
+    model: BlogDataEntity,
+    onFlightSelect: (BlogDataEntity) -> Unit,
 ) {
 
     Card(
         onClick = {
-            onFlightSelect.invoke(model.map2Entity())
+            onFlightSelect.invoke(model)
         },
         shape = RoundedCornerShape(size = 20.dp),
         elevation = AeroTheme.dimens.dp4,
@@ -60,7 +58,7 @@ internal fun FlightItem(
                             .background(color = AeroTheme.colors.dividerColor)
                     )
 
-                    NavigateItem(number = model.a)
+                    NavigateItem(number = model.subtitle)
                 }
             )
         }
@@ -156,7 +154,7 @@ private fun TrajectoryView() {
 }
 
 @Composable
-private fun FlightInfo(entity: FlightsListModel.Flight) {
+private fun FlightInfo(entity: BlogDataEntity) {
 
     ConstraintLayout(
         modifier = Modifier
@@ -167,7 +165,7 @@ private fun FlightInfo(entity: FlightsListModel.Flight) {
             val (departureCity, departureTime, arrivalCity, arrivalTime, statusTitle) = createRefs()
 
             Text(
-                text = entity.a,
+                text = entity.title,
                 style = AeroTheme.typography.bodyMedRoboto,
                 color = AeroTheme.colors.primaryText,
                 modifier = Modifier.constrainAs(
@@ -180,7 +178,7 @@ private fun FlightInfo(entity: FlightsListModel.Flight) {
             )
 
             Text(
-                text = entity.a,
+                text = entity.title,
                 style = AeroTheme.typography.subMedRoboto,
                 color = AeroTheme.colors.secondaryText,
                 modifier = Modifier
@@ -195,7 +193,7 @@ private fun FlightInfo(entity: FlightsListModel.Flight) {
             )
 
             Text(
-                text = entity.a,
+                text = entity.title,
                 style = AeroTheme.typography.bodyMedRoboto,
                 color = AeroTheme.colors.primaryText,
                 modifier = Modifier.constrainAs(
@@ -208,7 +206,7 @@ private fun FlightInfo(entity: FlightsListModel.Flight) {
             )
 
             Text(
-                text = entity.a,
+                text = entity.title,
                 style = AeroTheme.typography.subMedRoboto,
                 color = AeroTheme.colors.secondaryText,
                 modifier = Modifier

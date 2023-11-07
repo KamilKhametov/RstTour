@@ -3,23 +3,23 @@ package com.khametov.rsttour.screens.main
 import androidx.annotation.MainThread
 import com.khametov.rsttour.di.ModuleDependencyProvider
 import com.khametov.rsttour.screens.main.data.network.api.MainRestApi
-import com.khametov.rsttour.screens.main.di.DaggerFlightsComponent
-import com.khametov.rsttour.screens.main.di.FlightsComponent
+import com.khametov.rsttour.screens.main.di.DaggerMainComponent
+import com.khametov.rsttour.screens.main.di.MainComponent
 
-object FlightsFeature {
+object MainFeature {
 
-    private var component: FlightsComponent? = null
+    private var component: MainComponent? = null
 
-    var dependencies: ModuleDependencyProvider<FlightsDependencies>? = null
+    var dependencies: ModuleDependencyProvider<MainDependencies>? = null
 
     @MainThread
     fun getApi(): MainApi = getComponent().moduleApi()
 
-    internal fun getComponent(): FlightsComponent =
+    internal fun getComponent(): MainComponent =
         component ?: run {
 
-            component = DaggerFlightsComponent.factory().create(
-                flightsDependencies = requireNotNull(
+            component = DaggerMainComponent.factory().create(
+                mainDependencies = requireNotNull(
                     dependencies?.getDependencies()
                 )
             )
@@ -32,7 +32,7 @@ object FlightsFeature {
     }
 }
 
+interface MainDependencies {
 
-interface FlightsDependencies {
     fun provideRestApi(): MainRestApi
 }

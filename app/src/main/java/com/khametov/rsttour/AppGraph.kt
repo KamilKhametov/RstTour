@@ -7,7 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.khametov.rsttour.mediators.MediatorManager
 import com.khametov.rsttour.common.extensions.aeroComposable
 import com.khametov.rsttour.common.extensions.composeViewModel
-import com.khametov.rsttour.screens.main.presentation.list.FlightsScreen
+import com.khametov.rsttour.screens.main.presentation.list.MainScreen
 import com.khametov.rsttour.navigation.Screens
 import com.khametov.rsttour.screens.flow.presentation.FlowScreen
 
@@ -49,7 +49,7 @@ fun MainGraph(
                                         MediatorManager.flightsMediator.getApi().provideMainVM()
                                     }
 
-                                    FlightsScreen(
+                                    MainScreen(
                                         viewModel = viewModel,
                                         navController = navController
                                     )
@@ -74,7 +74,7 @@ fun MainGraph(
                         MediatorManager.flightsMediator.getApi().provideMainVM()
                     }
 
-                    FlightsScreen(navController = navController, viewModel = viewModel)
+                    MainScreen(navController = navController, viewModel = viewModel)
                 }
             )
 
@@ -84,7 +84,7 @@ fun MainGraph(
 //
 //                    val entity = navController.previousBackStackEntry
 //                        ?.arguments
-//                        ?.getParcelable<FlightEntity>(ARG_FLIGHT_ENTITY)
+//                        ?.getParcelable<FlightEntity>(ARG_MAIN_ENTITY)
 //                        ?: return@aeroComposable
 //
 //                    val viewModel = composeViewModel {

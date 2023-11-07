@@ -19,7 +19,7 @@ import com.khametov.rsttour.screens.main.presentation.list.views.LoadingScreen
 import com.khametov.rsttour.ui.theme.AeroTheme
 
 @Composable
-fun FlightsScreen(
+fun MainScreen(
     viewModel: BaseViewModel<MainViewState, MainViewEvent>,
     navController: NavController,
 ) {
@@ -41,12 +41,9 @@ fun FlightsScreen(
             if (screenState.isLoading.not()) {
                 ContentView(
                     content = screenState.content,
-                    loadNextPage = {
-                        viewModel.perform(viewEvent = MainViewEvent.LoadNextPage)
-                    },
                     onFlightSelect = { entity ->
                         navController.currentBackStackEntry?.arguments?.putParcelable(
-                            ARG_FLIGHT_ENTITY,
+                            ARG_MAIN_ENTITY,
                             entity
                         )
                         navController.navigate(target = Screens.ItemDetails)
@@ -57,4 +54,4 @@ fun FlightsScreen(
     )
 }
 
-const val ARG_FLIGHT_ENTITY = "ARG_FLIGHT_ENTITY"
+const val ARG_MAIN_ENTITY = "ARG_MAIN_ENTITY"

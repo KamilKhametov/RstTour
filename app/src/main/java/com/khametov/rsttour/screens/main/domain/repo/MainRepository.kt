@@ -1,7 +1,9 @@
 package com.khametov.rsttour.screens.main.domain.repo
 
-import com.khametov.rsttour.screens.main.domain.entity.FlightEntity
+import com.khametov.rsttour.screens.main.domain.entity.BlogEntity
+import com.khametov.rsttour.screens.main.domain.entity.MainEntity
 
 interface MainRepository {
-    suspend fun getFavorites(): List<FlightEntity>
+    suspend fun getMain(): MainEntity
+    suspend fun getBlog(requestUrl: String): BlogEntity
 }

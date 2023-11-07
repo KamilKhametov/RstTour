@@ -31,7 +31,7 @@ android {
         }
 
         named("debug") {
-            isDebuggable = true
+            isDebuggable = false
             isShrinkResources = false
             isMinifyEnabled = false
 

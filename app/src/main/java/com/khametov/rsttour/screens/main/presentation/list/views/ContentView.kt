@@ -6,18 +6,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.khametov.rsttour.common.helpers.ItemUi
-import com.khametov.rsttour.screens.main.domain.entity.FlightEntity
-import com.khametov.rsttour.screens.main.presentation.list.ui.FlightsListModel
+import com.khametov.rsttour.screens.main.domain.entity.BlogDataEntity
 
 @Composable
 internal fun ContentView(
-    content: List<ItemUi>,
-    loadNextPage: () -> Unit,
-    onFlightSelect: (FlightEntity) -> Unit,
+    content: List<BlogDataEntity>,
+    onFlightSelect: (BlogDataEntity) -> Unit,
 ) {
 
     LazyColumn(
@@ -27,21 +23,11 @@ internal fun ContentView(
         content = {
 
             itemsIndexed(items = content) { index, item ->
-                if (index == content.lastIndex) {
-                    SideEffect(
-                        effect = {
-                            loadNextPage.invoke()
-                        }
-                    )
-                }
 
-                when (item) {
-                    is FlightsListModel.Loading -> LoadingItem()
-                    is FlightsListModel.Flight  -> FlightItem(
-                        model = item,
-                        onFlightSelect = onFlightSelect
-                    )
-                }
+                MainItem(
+                    model = item,
+                    onFlightSelect = onFlightSelect
+                )
             }
         }
     )
