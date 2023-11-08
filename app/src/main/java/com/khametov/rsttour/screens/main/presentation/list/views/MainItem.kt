@@ -1,294 +1,74 @@
 package com.khametov.rsttour.screens.main.presentation.list.views
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
 import androidx.compose.material.Divider
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.constraintlayout.compose.ConstraintLayout
-import com.khametov.rsttour.R
+import coil.compose.rememberImagePainter
 import com.khametov.rsttour.screens.main.domain.entity.BlogDataEntity
-import com.khametov.rsttour.ui.helpers.DashedLine
 import com.khametov.rsttour.ui.theme.AeroTheme
+import com.khametov.rsttour.ui.theme.AeroTheme.typography
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 internal fun MainItem(
     model: BlogDataEntity,
     onFlightSelect: (BlogDataEntity) -> Unit,
 ) {
 
-    Card(
-        onClick = {
-            onFlightSelect.invoke(model)
-        },
-        shape = RoundedCornerShape(size = 20.dp),
-        elevation = AeroTheme.dimens.dp4,
-        backgroundColor = AeroTheme.colors.secondaryBackground,
-        modifier = Modifier.fillMaxWidth(),
-        content = {
-
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(vertical = AeroTheme.dimens.dp16),
-
-                content = {
-
-                    TrajectoryView()
-
-                    FlightInfo(entity = model)
-
-                    Divider(
-                        modifier = Modifier
-                            .padding(top = AeroTheme.dimens.dp16)
-                            .fillMaxWidth()
-                            .background(color = AeroTheme.colors.dividerColor)
-                    )
-
-                    NavigateItem(number = model.subtitle)
-                }
-            )
-        }
-    )
-}
-
-@Composable
-private fun TrajectoryView() {
-
-    ConstraintLayout(
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = AeroTheme.dimens.dp16),
+            .padding(start = 16.dp, top = 8.dp, bottom = 8.dp)
+            .clickable {
+                onFlightSelect(model)
+            }
+    ) {
+        Image(
+            painter = rememberImagePainter(model.image.md),
+            contentDescription = null,
+            modifier = Modifier
+                .size(80.dp)
+                .clip(RoundedCornerShape(8.dp)),
+            contentScale = ContentScale.Crop
+        )
 
-        content = {
-
-            val (departure, dashedStart, plane, dashedEnd, arrival) = createRefs()
-
-            Image(
-                painter = painterResource(id = R.drawable.icv_tab_booking),
-                contentDescription = null,
-                modifier = Modifier.constrainAs(
-                    ref = departure,
-                    constrainBlock = {
-                        start.linkTo(anchor = parent.start)
-                        top.linkTo(anchor = parent.top)
-                        bottom.linkTo(anchor = parent.bottom)
-                    }
-                )
-            )
-
-            DashedLine(
-                color = Color(color = 0xFFAED6DC),
-                modifier = Modifier
-                    .fillMaxWidth(fraction = 0.3f)
-                    .height(height = 1.dp)
-                    .constrainAs(
-                        ref = dashedStart,
-                        constrainBlock = {
-                            start.linkTo(anchor = departure.end)
-                            top.linkTo(anchor = parent.top)
-                            end.linkTo(anchor = plane.start)
-                            bottom.linkTo(anchor = parent.bottom)
-                        }
-                    )
-            )
-
-            Image(
-                painter = painterResource(id = R.drawable.icv_tab_booking),
-                contentDescription = null,
-                modifier = Modifier.constrainAs(
-                    ref = plane,
-                    constrainBlock = {
-                        start.linkTo(anchor = dashedStart.end)
-                        top.linkTo(anchor = parent.top)
-                        end.linkTo(anchor = dashedEnd.start)
-                        bottom.linkTo(anchor = parent.bottom)
-                    }
-                )
-            )
-
-            DashedLine(
-                color = Color(color = 0xFFAED6DC),
-                modifier = Modifier
-                    .fillMaxWidth(fraction = 0.45f)
-                    .height(height = 1.dp)
-                    .constrainAs(
-                        ref = dashedEnd,
-                        constrainBlock = {
-                            start.linkTo(anchor = plane.end)
-                            top.linkTo(anchor = parent.top)
-                            end.linkTo(anchor = arrival.start)
-                            bottom.linkTo(anchor = parent.bottom)
-                        }
-                    )
-            )
-
-            Image(
-                painter = painterResource(id = R.drawable.icv_tab_booking),
-                contentDescription = null,
-                modifier = Modifier.constrainAs(
-                    ref = arrival,
-                    constrainBlock = {
-                        top.linkTo(anchor = parent.top)
-                        end.linkTo(anchor = parent.end)
-                        bottom.linkTo(anchor = parent.bottom)
-                    }
-                )
-            )
-
-        }
-    )
-}
-
-@Composable
-private fun FlightInfo(entity: BlogDataEntity) {
-
-    ConstraintLayout(
-        modifier = Modifier
-            .padding(top = AeroTheme.dimens.dp16)
-            .fillMaxWidth()
-            .padding(horizontal = AeroTheme.dimens.dp16),
-        content = {
-            val (departureCity, departureTime, arrivalCity, arrivalTime, statusTitle) = createRefs()
-
+        Column() {
             Text(
-                text = entity.title,
-                style = AeroTheme.typography.bodyMedRoboto,
-                color = AeroTheme.colors.primaryText,
-                modifier = Modifier.constrainAs(
-                    ref = departureCity,
-                    constrainBlock = {
-                        start.linkTo(anchor = parent.start)
-                        top.linkTo(anchor = parent.top)
-                    }
-                )
+                text = model.title,
+                style = typography.header2MedRoboto,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.padding(horizontal = 16.dp)
             )
 
             Text(
-                text = entity.title,
-                style = AeroTheme.typography.subMedRoboto,
-                color = AeroTheme.colors.secondaryText,
-                modifier = Modifier
-                    .padding(top = AeroTheme.dimens.dp8)
-                    .constrainAs(
-                        ref = departureTime,
-                        constrainBlock = {
-                            start.linkTo(anchor = departureCity.start)
-                            top.linkTo(anchor = departureCity.bottom)
-                        }
-                    )
+                text = model.subtitle,
+                style = typography.subMedRoboto,
+                maxLines = 3,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.padding(horizontal = 16.dp)
             )
 
-            Text(
-                text = entity.title,
-                style = AeroTheme.typography.bodyMedRoboto,
-                color = AeroTheme.colors.primaryText,
-                modifier = Modifier.constrainAs(
-                    ref = arrivalCity,
-                    constrainBlock = {
-                        end.linkTo(anchor = parent.end)
-                        top.linkTo(anchor = parent.top)
-                    }
-                )
-            )
-
-            Text(
-                text = entity.title,
-                style = AeroTheme.typography.subMedRoboto,
-                color = AeroTheme.colors.secondaryText,
+            Divider(
+                color = AeroTheme.colors.dividerColor,
+                thickness = 1.dp,
                 modifier = Modifier
-                    .padding(top = AeroTheme.dimens.dp8)
-                    .constrainAs(
-                        ref = arrivalTime,
-                        constrainBlock = {
-                            end.linkTo(anchor = arrivalCity.end)
-                            top.linkTo(anchor = arrivalCity.bottom)
-                        }
-                    )
-            )
-
-            Text(
-                text = "wwrer",
-                style = AeroTheme.typography.bodyMedRoboto,
-                color = Color.Black,
-                modifier = Modifier
-                    .padding(top = AeroTheme.dimens.dp16)
-                    .constrainAs(
-                        ref = statusTitle,
-                        constrainBlock = {
-                            start.linkTo(anchor = departureTime.start)
-                            top.linkTo(anchor = departureTime.bottom)
-                        }
-                    )
+                    .fillMaxWidth()
+                    .padding(start = 16.dp, top = 8.dp)
             )
         }
-    )
-}
-
-@Composable
-private fun NavigateItem(number: String) {
-
-    ConstraintLayout(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = AeroTheme.dimens.dp16)
-            .padding(top = AeroTheme.dimens.dp16),
-        content = {
-            val (numberTitle, goThrough, chevron) = createRefs()
-
-            Text(
-                text = "Рейс №$number",
-                style = AeroTheme.typography.bodyMedRoboto,
-                color = AeroTheme.colors.primaryText,
-                modifier = Modifier.constrainAs(
-                    ref = numberTitle,
-                    constrainBlock = {
-                        start.linkTo(anchor = parent.start)
-                        top.linkTo(anchor = parent.top)
-                    }
-                )
-            )
-
-            Text(
-                text = "ПЕРЕЙТИ",
-                style = AeroTheme.typography.bodyMedRoboto,
-                color = AeroTheme.colors.primaryText,
-                modifier = Modifier
-                    .constrainAs(
-                        ref = goThrough,
-                        constrainBlock = {
-                            top.linkTo(anchor = chevron.top)
-                            end.linkTo(anchor = chevron.start)
-                            bottom.linkTo(anchor = chevron.bottom)
-                        }
-                    )
-            )
-
-            Image(
-                painter = painterResource(id = R.drawable.icv_tab_booking),
-                contentDescription = null,
-                modifier = Modifier.constrainAs(
-                    ref = chevron,
-                    constrainBlock = {
-                        end.linkTo(anchor = parent.end)
-                        top.linkTo(anchor = parent.top)
-                        bottom.linkTo(anchor = parent.bottom)
-                    }
-                )
-            )
-        }
-    )
+    }
 }

@@ -17,4 +17,5 @@ object Dependencies {
     const val serializationConverter = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:${Version.serializationConverter}"
     const val dagger = "com.google.dagger:dagger:${Version.dagger}"
     const val daggerCompiler = "com.google.dagger:dagger-compiler:${Version.dagger}"
+    const val coil = "io.coil-kt:coil-compose:${Version.coil}"
 }

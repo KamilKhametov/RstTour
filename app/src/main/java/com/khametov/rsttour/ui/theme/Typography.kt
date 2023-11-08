@@ -1,5 +1,6 @@
 package com.khametov.rsttour.ui.theme
 
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -41,7 +42,7 @@ val typography = AeroTypography(
     subMedRoboto = TextStyle(
         fontSize = 12.sp,
         fontFamily = familyRoboto,
-        fontWeight = FontWeight.Medium
+        fontWeight = FontWeight.Normal
     ),
     buttonMedRoboto = TextStyle(
         fontSize = 14.sp,

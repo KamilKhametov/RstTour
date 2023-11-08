@@ -77,6 +77,7 @@ dependencies {
     implementation(Dependencies.serializationJson)
     implementation(Dependencies.serializationConverter)
     implementation(Dependencies.dagger)
+    implementation(Dependencies.coil)
 
     implementation("androidx.navigation:navigation-compose:2.4.0")
     implementation("androidx.activity:activity-ktx:1.4.0")
@@ -84,6 +85,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview:1.1.1")
     implementation("androidx.compose.material:material:1.1.1")
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.0")
+
     implementation("com.google.accompanist:accompanist-systemuicontroller:${Version.accompanist}")
 
     kapt(Dependencies.daggerCompiler)

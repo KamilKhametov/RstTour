@@ -16,10 +16,10 @@ object Version {
     const val lifecycle = "2.4.1"
     const val retrofit = "2.9.0"
     const val okhttp = "4.9.3"
-    const val coil = "1.4.0"
     const val serializationJson = "1.3.2"
     const val serializationConverter = "0.8.0"
     const val timber = "5.0.1"
     const val dagger = "2.41"
     const val accompanist = "0.24.1-alpha"
+    const val coil = "1.4.0"
 }

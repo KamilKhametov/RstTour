@@ -17,7 +17,7 @@ internal fun ContentView(
 ) {
 
     LazyColumn(
-        contentPadding = PaddingValues(vertical = 12.dp, horizontal = 16.dp),
+        contentPadding = PaddingValues(vertical = 12.dp),
         verticalArrangement = Arrangement.spacedBy(space = 12.dp),
         modifier = Modifier.fillMaxSize(),
         content = {

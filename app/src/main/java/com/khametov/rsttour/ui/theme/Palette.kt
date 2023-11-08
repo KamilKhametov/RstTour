@@ -26,7 +26,7 @@ internal val DarkPalette = AeroColors(
 
 internal val LightPalette = AeroColors(
     headerColor = Black,
-    primaryBackground = White_F1F1F1,
+    primaryBackground = White,
     primaryText = Black,
     primaryButton = White,
     secondaryButton = Blue_4A536B,
@@ -35,5 +35,5 @@ internal val LightPalette = AeroColors(
     secondaryBackground = White,
     tintPrimary = Blue_4A536B,
     tintSecondary = Blue_9099B1,
-    dividerColor = Gray_D8D8D8
+    dividerColor = White_F5F5F5
 )
