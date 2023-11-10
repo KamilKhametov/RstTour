@@ -1,6 +1,5 @@
 package com.khametov.rsttour.screens.splash.presentation
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,15 +10,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.khametov.rsttour.R
 import com.khametov.rsttour.common.base.BaseViewModel
 import com.khametov.rsttour.navigation.Screens
 import com.khametov.rsttour.screens.splash.presentation.mvi.SplashViewEvent
 import com.khametov.rsttour.screens.splash.presentation.mvi.SplashViewState
-import com.khametov.rsttour.ui.theme.AeroTheme
+import com.khametov.rsttour.ui.theme.RstTheme
 import kotlinx.coroutines.delay
 
 @Composable
@@ -31,20 +28,17 @@ fun SplashScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = AeroTheme.colors.primaryBackground),
+            .background(
+                color = RstTheme.colors.primaryBackground
+            ),
         contentAlignment = Alignment.Center,
         content = {
 
-            Image(
-                painter = painterResource(id = R.drawable.icv_tab_main),
-                contentDescription = null
-            )
-
             CircularProgressIndicator(
                 strokeWidth = 3.dp,
-                color = AeroTheme.colors.spinnerColor,
+                color = RstTheme.colors.spinnerColor,
                 modifier = Modifier
-                    .align(alignment = Alignment.BottomCenter)
+                    .align(alignment = Alignment.Center)
                     .padding(bottom = 28.dp)
                     .size(size = 28.dp)
             )
@@ -53,7 +47,7 @@ fun SplashScreen(
 
     LaunchedEffect(
         key1 = Unit, block = {
-            delay(2000)
+            delay(1500)
             navController.navigate(
                 route = Screens.Flow.route,
                 builder = {

@@ -19,9 +19,10 @@ import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.khametov.rsttour.navigation.Screens
 import com.khametov.rsttour.screens.flow.domain.TabItem
-import com.khametov.rsttour.ui.theme.AeroTheme
-import com.khametov.rsttour.ui.theme.Blue_4A536B
+import com.khametov.rsttour.ui.theme.Grey_1A1A1A
+import com.khametov.rsttour.ui.theme.Grey_6
 import com.khametov.rsttour.ui.theme.White
+import com.khametov.rsttour.ui.theme.White_6
 
 @Composable
 fun FlowScreen(
@@ -29,7 +30,9 @@ fun FlowScreen(
     isDarkMode: Boolean,
 ) {
     val navController = rememberNavController()
-    val navItems = arrayOf(TabItem.MAIN, TabItem.MAP, TabItem.BOOKING, TabItem.CHAT, TabItem.MORE)
+    val navItemsLight = arrayOf(TabItem.MAIN, TabItem.MAP, TabItem.BOOKING, TabItem.CHAT, TabItem.MORE)
+    val navItemsDark = arrayOf(TabItem.MAIN_DARK, TabItem.MAP_DARK, TabItem.BOOKING_DARK, TabItem.CHAT_DARK, TabItem.MORE_DARK)
+    val navItems = if (isDarkMode) navItemsDark else navItemsLight
 
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
@@ -39,7 +42,7 @@ fun FlowScreen(
     SideEffect(
         effect = {
             systemUiController.setSystemBarsColor(
-                color = if (isDarkMode) Blue_4A536B else White
+                color = if (isDarkMode) Grey_1A1A1A else White
             )
         }
     )
@@ -47,13 +50,13 @@ fun FlowScreen(
     Scaffold(
         bottomBar = {
             BottomNavigation(
-                backgroundColor = AeroTheme.colors.secondaryBackground,
+                backgroundColor = if (isDarkMode) Grey_1A1A1A else White,
                 content = {
                     navItems.forEach { target ->
                         BottomNavigationItem(
                             selected = currentRoute == target.route,
-                            selectedContentColor = AeroTheme.colors.tintPrimary,
-                            unselectedContentColor = AeroTheme.colors.tintSecondary,
+                            selectedContentColor = if (isDarkMode) White_6 else Grey_6,
+                            unselectedContentColor = if (isDarkMode) White_6 else Grey_6,
                             alwaysShowLabel = true,
                             onClick = {
                                 navController.navigate(

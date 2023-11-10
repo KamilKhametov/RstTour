@@ -3,28 +3,28 @@ package com.khametov.rsttour.ui.theme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.staticCompositionLocalOf
 
-object AeroTheme {
-    val colors: AeroColors
+object RstTheme {
+    val colors: RstColors
         @Composable
-        get() = LocalAeroColors.current
+        get() = LocalRstColors.current
 
-    val typography: AeroTypography
+    val typography: RstTypography
         @Composable
-        get() = LocalAeroTypography.current
+        get() = LocalRstTypography.current
 
-    val dimens: AeroDimens
+    val dimens: RstDimens
         @Composable
-        get() = LocalAeroDimens.current
+        get() = LocalRstDimens.current
 }
 
-val LocalAeroColors = staticCompositionLocalOf<AeroColors> {
+val LocalRstColors = staticCompositionLocalOf<RstColors> {
     error("No colors provided")
 }
 
-val LocalAeroTypography = staticCompositionLocalOf<AeroTypography> {
+val LocalRstTypography = staticCompositionLocalOf<RstTypography> {
     error("No typography provided")
 }
 
-val LocalAeroDimens = staticCompositionLocalOf<AeroDimens> {
+val LocalRstDimens = staticCompositionLocalOf<RstDimens> {
     error("No dimens provided")
 }

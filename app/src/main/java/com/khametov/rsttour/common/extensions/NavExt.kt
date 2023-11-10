@@ -33,7 +33,7 @@ fun NavController.navigate(
 }
 
 @ExperimentalAnimationApi
-fun NavGraphBuilder.aeroComposable(
+fun NavGraphBuilder.rstComposable(
     target: NavTarget,
     arguments: List<NamedNavArgument> = emptyList(),
     deepLinks: List<NavDeepLink> = emptyList(),

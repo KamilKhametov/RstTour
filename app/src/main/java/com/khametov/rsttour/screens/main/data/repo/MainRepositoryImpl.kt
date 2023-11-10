@@ -1,9 +1,9 @@
 package com.khametov.rsttour.screens.main.data.repo
 
 import com.khametov.rsttour.common.base.BaseMapper
-import com.khametov.rsttour.screens.main.data.db.model.BlogDto
-import com.khametov.rsttour.screens.main.data.db.model.MainDetailsDto
-import com.khametov.rsttour.screens.main.data.db.model.MainDto
+import com.khametov.rsttour.screens.main.data.model.BlogDto
+import com.khametov.rsttour.screens.main.data.model.MainDetailsDto
+import com.khametov.rsttour.screens.main.data.model.MainDto
 import com.khametov.rsttour.screens.main.data.network.api.MainRestApi
 import com.khametov.rsttour.screens.main.domain.entity.BlogEntity
 import com.khametov.rsttour.screens.main.domain.entity.MainDetailsEntity

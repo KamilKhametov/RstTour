@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.khametov.rsttour.ui.theme.AeroTheme
+import com.khametov.rsttour.ui.theme.RstTheme
 
 @Composable
 internal fun LoadingItem() {
@@ -22,7 +22,7 @@ internal fun LoadingItem() {
         content = {
             CircularProgressIndicator(
                 strokeWidth = 3.dp,
-                color = AeroTheme.colors.tintPrimary,
+                color = RstTheme.colors.tintPrimary,
                 modifier = Modifier.size(size = 32.dp)
             )
         }

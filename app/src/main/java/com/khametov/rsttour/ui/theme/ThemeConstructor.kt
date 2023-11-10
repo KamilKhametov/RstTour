@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 
 @Composable
-fun FlightAeroTheme(
+fun RstTheme(
     darkTheme: Boolean,
     content: @Composable () -> Unit,
 ) {
@@ -15,9 +15,9 @@ fun FlightAeroTheme(
     }
 
     CompositionLocalProvider(
-        LocalAeroColors provides colors,
-        LocalAeroTypography provides typography,
-        LocalAeroDimens provides AeroDimens(),
+        LocalRstColors provides colors,
+        LocalRstTypography provides typography,
+        LocalRstDimens provides RstDimens(),
         content = content
     )
 }

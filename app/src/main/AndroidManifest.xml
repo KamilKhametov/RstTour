@@ -12,11 +12,12 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.RstTour"
+        android:theme="@style/Theme.RstCompose"
         tools:targetApi="31">
         <activity
             android:name="com.khametov.rsttour.AppActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.RstCompose.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

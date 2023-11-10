@@ -1,8 +1,8 @@
 package com.khametov.rsttour.screens.main.data.mapper
 
 import com.khametov.rsttour.common.base.BaseMapper
-import com.khametov.rsttour.screens.main.data.db.model.BlogDataDto
-import com.khametov.rsttour.screens.main.data.db.model.BlogDto
+import com.khametov.rsttour.screens.main.data.model.BlogDataDto
+import com.khametov.rsttour.screens.main.data.model.BlogDto
 import com.khametov.rsttour.screens.main.domain.entity.BlogDataEntity
 import com.khametov.rsttour.screens.main.domain.entity.BlogEntity
 import javax.inject.Inject

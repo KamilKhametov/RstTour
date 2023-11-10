@@ -19,13 +19,13 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.khametov.rsttour.screens.main.domain.entity.BlogDataEntity
-import com.khametov.rsttour.ui.theme.AeroTheme
-import com.khametov.rsttour.ui.theme.AeroTheme.typography
+import com.khametov.rsttour.ui.theme.RstTheme.colors
+import com.khametov.rsttour.ui.theme.RstTheme.typography
 
 @Composable
 internal fun MainItem(
     model: BlogDataEntity,
-    onFlightSelect: (BlogDataEntity) -> Unit,
+    onBlogSelect: (BlogDataEntity) -> Unit,
 ) {
 
     Row(
@@ -33,7 +33,7 @@ internal fun MainItem(
         modifier = Modifier
             .padding(start = 16.dp, top = 8.dp, bottom = 8.dp)
             .clickable {
-                onFlightSelect(model)
+                onBlogSelect(model)
             }
     ) {
         Image(
@@ -45,10 +45,11 @@ internal fun MainItem(
             contentScale = ContentScale.Crop
         )
 
-        Column() {
+        Column {
             Text(
                 text = model.title,
                 style = typography.header2MedRoboto,
+                color = colors.primaryText,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier.padding(horizontal = 16.dp)
@@ -58,12 +59,13 @@ internal fun MainItem(
                 text = model.subtitle,
                 style = typography.subMedRoboto,
                 maxLines = 3,
+                color = colors.primaryText,
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier.padding(horizontal = 16.dp)
             )
 
             Divider(
-                color = AeroTheme.colors.dividerColor,
+                color = colors.dividerColor,
                 thickness = 1.dp,
                 modifier = Modifier
                     .fillMaxWidth()

@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import com.khametov.rsttour.ui.theme.AeroTheme
+import com.khametov.rsttour.ui.theme.RstTheme
 
 @Composable
 fun Toolbar(
@@ -23,7 +23,7 @@ fun Toolbar(
 ) {
     TopAppBar(
         modifier = modifier,
-        backgroundColor = AeroTheme.colors.secondaryBackground,
+        backgroundColor = RstTheme.colors.secondaryBackground,
         content = {
             IconButton(
                 onClick = { startButtonListener.invoke() },
@@ -37,11 +37,11 @@ fun Toolbar(
 
             Text(
                 text = title,
-                style = AeroTheme.typography.headerMedRoboto,
-                color = AeroTheme.colors.headerColor,
+                style = RstTheme.typography.headerMedRoboto,
+                color = RstTheme.colors.headerColor,
                 modifier = Modifier
                     .weight(weight = 1f)
-                    .padding(start = AeroTheme.dimens.dp16)
+                    .padding(start = RstTheme.dimens.dp16)
                     .align(alignment = Alignment.CenterVertically)
             )
 

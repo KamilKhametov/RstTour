@@ -13,7 +13,7 @@ import com.khametov.rsttour.screens.main.domain.entity.BlogDataEntity
 @Composable
 internal fun ContentView(
     content: List<BlogDataEntity>,
-    onFlightSelect: (BlogDataEntity) -> Unit,
+    onBlogSelect: (BlogDataEntity) -> Unit,
 ) {
 
     LazyColumn(
@@ -26,7 +26,7 @@ internal fun ContentView(
 
                 MainItem(
                     model = item,
-                    onFlightSelect = onFlightSelect
+                    onBlogSelect = onBlogSelect
                 )
             }
         }

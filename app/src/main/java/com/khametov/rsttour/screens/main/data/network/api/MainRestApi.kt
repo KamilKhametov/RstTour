@@ -1,8 +1,8 @@
 package com.khametov.rsttour.screens.main.data.network.api
 
-import com.khametov.rsttour.screens.main.data.db.model.BlogDto
-import com.khametov.rsttour.screens.main.data.db.model.MainDetailsDto
-import com.khametov.rsttour.screens.main.data.db.model.MainDto
+import com.khametov.rsttour.screens.main.data.model.BlogDto
+import com.khametov.rsttour.screens.main.data.model.MainDetailsDto
+import com.khametov.rsttour.screens.main.data.model.MainDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 import retrofit2.http.Url

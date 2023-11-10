@@ -5,7 +5,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-data class AeroDimens(
+data class RstDimens(
     val dp4: Dp = 4.dp,
     val dp8: Dp = 8.dp,
     val dp12: Dp = 12.dp,

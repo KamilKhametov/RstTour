@@ -35,5 +35,30 @@ enum class TabItem(
         route = Screens.More.route,
         icon = R.drawable.icv_tab_more,
         title = R.string.more_tab_title
+    ),
+    MAIN_DARK(
+        route = Screens.Main.route,
+        icon = R.drawable.icv_tab_main,
+        title = R.string.main_tab_title
+    ),
+    MAP_DARK(
+        route = Screens.Map.route,
+        icon = R.drawable.icv_tab_map_dark,
+        title = R.string.map_tab_title
+    ),
+    BOOKING_DARK(
+        route = Screens.Booking.route,
+        icon = R.drawable.icv_tab_booking_dark,
+        title = R.string.booking_tab_title
+    ),
+    CHAT_DARK(
+        route = Screens.Chat.route,
+        icon = R.drawable.icv_tab_chat_dark,
+        title = R.string.chat_tab_title
+    ),
+    MORE_DARK(
+        route = Screens.More.route,
+        icon = R.drawable.icv_tab_more_dark,
+        title = R.string.more_tab_title
     );
 }

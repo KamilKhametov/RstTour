@@ -1,4 +1,4 @@
-package com.khametov.rsttour.screens.main.data.db.model
+package com.khametov.rsttour.screens.main.data.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

@@ -13,11 +13,11 @@ import javax.inject.Provider
 
 class MainApiImpl @Inject constructor() : MainApi {
 
-    @Inject lateinit var viewModelFactoryFlights: Provider<MainViewModel>
+    @Inject lateinit var viewModelFactoryMain: Provider<MainViewModel>
     @Inject lateinit var mainDetailFactory: MainDetailsViewModel.Factory
 
     override fun provideMainVM(): BaseViewModel<MainViewState, MainViewEvent> {
-        return viewModelFactoryFlights.get()
+        return viewModelFactoryMain.get()
     }
 
     override fun provideMainDetailsVM(entity: BlogDataEntity): BaseViewModel<MainDetailsViewState, MainDetailsViewEvent> {

@@ -8,8 +8,8 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import com.khametov.rsttour.ui.theme.AeroTheme
-import com.khametov.rsttour.ui.theme.FlightAeroTheme
+import com.khametov.rsttour.screens.main.domain.entity.SettingsBundle
+import com.khametov.rsttour.ui.theme.RstTheme
 import javax.inject.Inject
 
 class AppActivity : ComponentActivity() {
@@ -27,13 +27,18 @@ class AppActivity : ComponentActivity() {
 
             val isDarkMode = remember { mutableStateOf(isDarkModeInitial) }
 
-            FlightAeroTheme(
+            RstTheme(
                 darkTheme = isDarkMode.value,
                 content = {
                     Surface(
-                        color = AeroTheme.colors.primaryBackground,
+                        color = RstTheme.colors.primaryBackground,
                         content = {
-                            MainGraph()
+                            MainGraph(
+                                settingsState = SettingsBundle(isDarkMode = isDarkMode.value),
+                                onSettingsChanged = { bundle ->
+                                    isDarkMode.value = bundle.isDarkMode
+                                }
+                            )
                         }
                     )
                 }

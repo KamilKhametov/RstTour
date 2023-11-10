@@ -28,7 +28,7 @@ import com.khametov.rsttour.common.extensions.isNull
 import com.khametov.rsttour.common.helpers.DateUtils
 import com.khametov.rsttour.screens.main.presentation.details.mvi.MainDetailsViewEvent
 import com.khametov.rsttour.screens.main.presentation.details.mvi.MainDetailsViewState
-import com.khametov.rsttour.ui.theme.AeroTheme
+import com.khametov.rsttour.ui.theme.RstTheme
 
 @Composable
 fun MainDetailsScreen(
@@ -71,19 +71,22 @@ fun MainDetailsScreen(
 
         Text(
             text = DateUtils.getDateRequestFormat(screenState.detailsEntity?.date).orEmpty(),
-            style = AeroTheme.typography.subMedRoboto,
+            style = RstTheme.typography.subMedRoboto,
+            color = RstTheme.colors.primaryText,
             modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp)
         )
         Text(
             text = screenState.detailsEntity?.title.orEmpty(),
             fontSize = 24.sp,
-            style = AeroTheme.typography.headerMedRoboto,
+            style = RstTheme.typography.headerMedRoboto,
+            color = RstTheme.colors.primaryText,
             modifier = Modifier.padding(horizontal = 16.dp)
         )
         Text(
             text = screenState.detailsEntity?.content.orEmpty(),
             fontSize = 16.sp,
-            style = AeroTheme.typography.subMedRoboto,
+            style = RstTheme.typography.subMedRoboto,
+            color = RstTheme.colors.primaryText,
             modifier = Modifier.padding(top = 32.dp, start = 16.dp, end = 16.dp, bottom = 16.dp)
         )
     }
