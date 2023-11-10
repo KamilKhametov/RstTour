@@ -18,4 +18,11 @@ object Dependencies {
     const val dagger = "com.google.dagger:dagger:${Version.dagger}"
     const val daggerCompiler = "com.google.dagger:dagger-compiler:${Version.dagger}"
     const val coil = "io.coil-kt:coil-compose:${Version.coil}"
+    const val composeNavigation = "androidx.navigation:navigation-compose:${Version.composeNavigation}"
+    const val activityKtx = "androidx.activity:activity-ktx:${Version.activityKtx}"
+    const val composeUi = "androidx.compose.ui:ui:${Version.composeUi}"
+    const val composeUiTooling = "androidx.compose.ui:ui-tooling-preview:${Version.composeUi}"
+    const val composeMaterial = "androidx.compose.material:material:${Version.composeUi}"
+    const val composeConstraint = "androidx.constraintlayout:constraintlayout-compose:${Version.composeConstraint}"
+    const val accompanist = "com.google.accompanist:accompanist-systemuicontroller:${Version.accompanist}"
 }

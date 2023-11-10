@@ -22,4 +22,8 @@ object Version {
     const val dagger = "2.41"
     const val accompanist = "0.24.1-alpha"
     const val coil = "1.4.0"
+    const val composeNavigation = "2.4.0"
+    const val activityKtx = "1.4.0"
+    const val composeUi = "1.1.1"
+    const val composeConstraint = "1.0.0"
 }
