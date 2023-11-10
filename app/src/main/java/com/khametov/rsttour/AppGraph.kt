@@ -10,6 +10,10 @@ import com.khametov.rsttour.common.extensions.composeViewModel
 import com.khametov.rsttour.screens.main.presentation.list.MainScreen
 import com.khametov.rsttour.navigation.Screens
 import com.khametov.rsttour.screens.flow.presentation.FlowScreen
+import com.khametov.rsttour.screens.main.domain.entity.BlogDataEntity
+import com.khametov.rsttour.screens.main.presentation.details.MainDetailsScreen
+import com.khametov.rsttour.screens.main.presentation.list.ARG_MAIN_ENTITY
+import com.khametov.rsttour.screens.splash.presentation.SplashScreen
 
 @ExperimentalAnimationApi
 @Composable
@@ -21,8 +25,20 @@ fun MainGraph(
 
     NavHost(
         navController = navController,
-        startDestination = Screens.Flow.route,
+        startDestination = Screens.Splash.route,
         builder = {
+
+            aeroComposable(
+                target = Screens.Splash,
+                content = {
+
+                    val viewModel = composeViewModel {
+                        MediatorManager.splashMediator.getApi().provideViewModel()
+                    }
+
+                    SplashScreen(viewModel = viewModel, navController = navController)
+                }
+            )
 
 //            aeroComposable(
 //                target = Screens.Settings,
@@ -36,6 +52,28 @@ fun MainGraph(
 //            )
 
             aeroComposable(
+                target = Screens.FlightDetails,
+                content = {
+
+                    val entity = navController.previousBackStackEntry
+                        ?.arguments
+                        ?.getParcelable<BlogDataEntity>(ARG_MAIN_ENTITY)
+                        ?: return@aeroComposable
+
+                    val viewModel = composeViewModel {
+                        MediatorManager.mainMediator.getApi().provideMainDetailsVM(
+                            entity = entity
+                        )
+                    }
+
+                    MainDetailsScreen(
+                        viewModel = viewModel,
+                        navController = navController
+                    )
+                }
+            )
+
+            aeroComposable(
                 target = Screens.Flow,
                 content = {
                     FlowScreen(
@@ -46,7 +84,7 @@ fun MainGraph(
                                 content = {
 
                                     val viewModel = composeViewModel {
-                                        MediatorManager.flightsMediator.getApi().provideMainVM()
+                                        MediatorManager.mainMediator.getApi().provideMainVM()
                                     }
 
                                     MainScreen(
@@ -65,41 +103,6 @@ fun MainGraph(
                     )
                 }
             )
-
-            aeroComposable(
-                target = Screens.Main,
-                content = {
-
-                    val viewModel = composeViewModel {
-                        MediatorManager.flightsMediator.getApi().provideMainVM()
-                    }
-
-                    MainScreen(navController = navController, viewModel = viewModel)
-                }
-            )
-
-//            aeroComposable(
-//                target = Screens.FlightDetails,
-//                content = {
-//
-//                    val entity = navController.previousBackStackEntry
-//                        ?.arguments
-//                        ?.getParcelable<FlightEntity>(ARG_MAIN_ENTITY)
-//                        ?: return@aeroComposable
-//
-//                    val viewModel = composeViewModel {
-//                        MediatorManager.flightsMediator.getApi().provideMainDetailsVM(
-//                            entity = entity
-//                        )
-//                    }
-//
-//                    FlightDetailsScreen(
-//                        viewModel = viewModel,
-//                        navController = navController
-//                    )
-//                }
-//            )
-//
         }
     )
 }
