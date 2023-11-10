@@ -20,7 +20,7 @@ import com.khametov.rsttour.ui.theme.AeroTheme
 internal fun PlaneInfo() {
 
     Text(
-        text = stringResource(id = R.string.more_tab_title),
+        text = stringResource(id = R.string.main_tab_title),
         style = AeroTheme.typography.header2MedRoboto,
         color = AeroTheme.colors.secondaryText,
         modifier = Modifier.padding(top = AeroTheme.dimens.dp24, start = AeroTheme.dimens.dp16)
@@ -73,7 +73,7 @@ internal fun PlaneInfo() {
 
                     InfoElement(
                         title = stringResource(
-                            id = R.string.chat_tab_title
+                            id = R.string.main_tab_title
                         ), value = "YR-BAC"
                     )
 
@@ -86,7 +86,7 @@ internal fun PlaneInfo() {
 
                     InfoElement(
                         title = stringResource(
-                            id = R.string.map_tab_title
+                            id = R.string.main_tab_title
                         ), value = "31 год"
                     )
 
@@ -99,7 +99,7 @@ internal fun PlaneInfo() {
 
                     InfoElement(
                         title = stringResource(
-                            id = R.string.chat_tab_title
+                            id = R.string.main_tab_title
                         ), value = "21.12.2009г"
                     )
                 }

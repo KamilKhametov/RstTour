@@ -2,6 +2,10 @@ package com.khametov.rsttour.navigation
 
 sealed class Screens : NavTarget {
 
+    object Splash : Screens() {
+        override val route: String = "splash"
+    }
+
     object Flow : Screens() {
         override val route: String = "flow"
     }
@@ -26,7 +30,7 @@ sealed class Screens : NavTarget {
         override val route: String = "more"
     }
 
-    object ItemDetails : Screens() {
-        override val route: String = "item_details"
+    object FlightDetails : Screens() {
+        override val route: String = "flight_details"
     }
 }

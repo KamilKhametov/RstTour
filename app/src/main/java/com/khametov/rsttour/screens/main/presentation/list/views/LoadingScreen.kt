@@ -40,14 +40,13 @@ internal fun LoadingScreen() {
     )
 }
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 private fun ShimmerItem(brush: Brush) {
 
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(height = 200.dp)
+            .height(height = 96.dp)
             .background(brush = brush, shape = RoundedCornerShape(size = 20.dp))
     )
 }

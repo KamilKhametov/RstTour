@@ -9,6 +9,8 @@ import com.khametov.rsttour.screens.main.data.db.model.BlogDto
 import com.khametov.rsttour.screens.main.data.db.model.BlogImageDto
 import com.khametov.rsttour.screens.main.data.db.model.MainContentDto
 import com.khametov.rsttour.screens.main.data.db.model.MainDataDto
+import com.khametov.rsttour.screens.main.data.db.model.MainDetailsDataDto
+import com.khametov.rsttour.screens.main.data.db.model.MainDetailsDto
 import com.khametov.rsttour.screens.main.data.db.model.MainDto
 import com.khametov.rsttour.screens.main.data.db.model.MainTemplateDto
 import com.khametov.rsttour.screens.main.data.mapper.BlogDataMapper
@@ -16,6 +18,8 @@ import com.khametov.rsttour.screens.main.data.mapper.BlogImageMapper
 import com.khametov.rsttour.screens.main.data.mapper.BlogMapper
 import com.khametov.rsttour.screens.main.data.mapper.MainContentMapper
 import com.khametov.rsttour.screens.main.data.mapper.MainDataMapper
+import com.khametov.rsttour.screens.main.data.mapper.MainDetailsDataMapper
+import com.khametov.rsttour.screens.main.data.mapper.MainDetailsMapper
 import com.khametov.rsttour.screens.main.data.mapper.MainMapper
 import com.khametov.rsttour.screens.main.data.mapper.MainTemplateMapper
 import com.khametov.rsttour.screens.main.data.repo.MainRepositoryImpl
@@ -24,6 +28,8 @@ import com.khametov.rsttour.screens.main.domain.entity.BlogEntity
 import com.khametov.rsttour.screens.main.domain.entity.BlogImageEntity
 import com.khametov.rsttour.screens.main.domain.entity.MainContentEntity
 import com.khametov.rsttour.screens.main.domain.entity.MainDataEntity
+import com.khametov.rsttour.screens.main.domain.entity.MainDetailsDataEntity
+import com.khametov.rsttour.screens.main.domain.entity.MainDetailsEntity
 import com.khametov.rsttour.screens.main.domain.entity.MainEntity
 import com.khametov.rsttour.screens.main.domain.entity.MainTemplateEntity
 import com.khametov.rsttour.screens.main.domain.repo.MainRepository
@@ -69,4 +75,12 @@ internal interface MainModule {
     @Binds
     @Reusable
     fun bindBlogImageMapper(impl: BlogImageMapper): BaseMapper<BlogImageDto, BlogImageEntity>
+
+    @Binds
+    @Reusable
+    fun bindMainDetailsMapper(impl: MainDetailsMapper): BaseMapper<MainDetailsDto, MainDetailsEntity>
+
+    @Binds
+    @Reusable
+    fun bindMainDetailsDataMapper(impl: MainDetailsDataMapper): BaseMapper<MainDetailsDataDto, MainDetailsDataEntity>
 }

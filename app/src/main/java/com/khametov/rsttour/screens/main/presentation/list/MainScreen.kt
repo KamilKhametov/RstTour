@@ -1,6 +1,5 @@
 package com.khametov.rsttour.screens.main.presentation.list
 
-import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -28,8 +27,6 @@ fun MainScreen(
 
     val screenState by viewModel.viewState.collectAsState()
 
-    val context = LocalContext.current
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -46,14 +43,13 @@ fun MainScreen(
                 ContentView(
                     content = screenState.content,
                     onFlightSelect = { entity ->
-                        Toast.makeText(context, "$entity", Toast.LENGTH_SHORT).show()
 
-                        // TODO: Реализовать переход на деталку
-//                        navController.currentBackStackEntry?.arguments?.putParcelable(
-//                            ARG_MAIN_ENTITY,
-//                            entity
-//                        )
-//                        navController.navigate(target = Screens.ItemDetails)
+                        navController.currentBackStackEntry?.arguments?.putParcelable(
+                            ARG_MAIN_ENTITY,
+                            entity
+                        )
+
+                        navController.navigate(target = Screens.FlightDetails)
                     }
                 )
             }
